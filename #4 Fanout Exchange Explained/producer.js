@@ -17,6 +17,8 @@ const announceNewProduct = async (product) => {
     const buffer = Buffer.from(JSON.stringify(product));
 
     // Publish the message to the exchange
+
+    // Routing key yahan par issliye use nai hoti hai kuki ye sabhi queue ko data bhej dega. Jabb sabhi queues ko ye data bhej dega fir routing key ka kya kaam. Issliye Fanout exchange mein routing key ka koi kaam nai hota hai.
     channel.publish(exchange, "", buffer, { persistent: true });
 
     console.log("Product announced successfully:", product.name);
